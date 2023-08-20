@@ -153,6 +153,11 @@ function! s:CondDefSetting(settingName, def)
 endfunction
  
 call s:CondDefSetting('g:p4CmdPath', 'p4')
+
+if !executable(g:p4CmdPath)
+  finish
+endif
+
 call s:CondDefSetting('g:p4ClientRoot', '')
 call s:CondDefSetting('g:p4DefaultListSize', '100')
 call s:CondDefSetting('g:p4DefaultDiffOptions', '')
